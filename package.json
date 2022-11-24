@@ -2,7 +2,7 @@
   "name": "antddaterangepicker",
   "widgetName": "AntdDateRangePicker",
   "version": "1.0.0",
-  "description": "My widget description",
+  "description": "A powerful Mendix pluggable widget used to pick date and time. It brings the ant-deign widget DatePicker into Mendix and implements almost all the features of the original widget.",
   "copyright": "© Mendix Technology BV 2022. All rights reserved.",
   "author": "Jonathan Zhu",
   "engines": {
@@ -10,7 +10,7 @@
   },
   "license": "Apache-2.0",
   "config": {
-    "projectPath": "./tests/testProject",
+    "projectPath": "E:\\MyDocuments\\Mendix\\MyFirstApp-main",       
     "mendixHost": "http://localhost:8080",
     "developmentPort": 3000
   },

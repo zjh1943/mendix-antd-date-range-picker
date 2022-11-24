@@ -4,14 +4,166 @@
         xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
     <name>Antd Date Range Picker</name>
-    <description>My widget description</description>
+    <description>A powerful Mendix pluggable widget used to pick date and time. It brings the ant-deign widget DatePicker into Mendix and implements almost all the features of the original widget</description>
     <icon/>
     <properties>
         <propertyGroup caption="General">
-            <property key="sampleText" type="string" required="false">
-                <caption>Default value</caption>
-                <description>Sample text input</description>
-            </property>
+            <propertyGroup caption="Main">
+                <property key="defaultValueStart" type="attribute" required="false">
+                    <caption>Default start time</caption>
+                    <description>The default start time value when the widget shows.</description>
+                    <attributeTypes>
+                        <attributeType name="DateTime" />
+                    </attributeTypes>
+                </property>
+                <property key="valueStart" type="attribute" required="false">
+                    <caption>Start time</caption>
+                    <description>The start time value.</description>
+                    <attributeTypes>
+                        <attributeType name="DateTime" />
+                    </attributeTypes>
+                </property>
+                <property key="defaultValueEnd" type="attribute" required="false">
+                    <caption>Default end time</caption>
+                    <description>The default end time value when the widget shows.</description>
+                    <attributeTypes>
+                        <attributeType name="DateTime" />
+                    </attributeTypes>
+                </property>
+                <property key="valueEnd" type="attribute" required="false">
+                    <caption>End time</caption>
+                    <description>The end time value.</description>
+                    <attributeTypes>
+                        <attributeType name="DateTime" />
+                    </attributeTypes>
+                </property>
+                <property key="format" type="string" required="false" defaultValue="YYYY-MM-DD">
+                    <caption>Format</caption>
+                    <description>The format of DateTime value shown on the input frame. e.g. YYYY/MM/DD HH:mm:ss.</description>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Events">
+                <property key="onChange" type="action" required="false">
+                    <caption>On value change</caption>
+                    <description>Will be triggered when eithter start value or end value is changed.</description>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Show Time">
+                <property key="showTime" type="boolean" required="true" defaultValue="false">
+                    <caption>Show time</caption>
+                    <description>Whether show time picker on the picker pannel.</description>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="System">
+                <systemProperty key="Editability" />
+                <systemProperty key="Visibility" />
+            </propertyGroup>
+        </propertyGroup>
+        <propertyGroup caption="Advanced">
+            <propertyGroup caption="Allow Empty">
+                <property key="allowEmptyStart" type="boolean" defaultValue="false">
+                    <caption>Allow start time empty.</caption>
+                    <description></description>
+                </property>
+                <property key="allowEmptyEnd" type="boolean" defaultValue="false">
+                    <caption>Allow end time empty.</caption>
+                    <description></description>
+                </property>
+            </propertyGroup>
+
+            <propertyGroup caption="Picker Value">
+                <property key="onPickerValueChange" type="action" required="false">
+                    <caption>On value change</caption>
+                    <description>Will be triggered when user select a date on the picker pannel.</description>
+                </property>
+                <property key="pickerValueStart" type="attribute" required="false">
+                    <caption>Start time</caption>
+                    <description>The start DateTime value that a user just selected on the picker pannel. Only use this value when you want to get the value in the action handler of the above `On value change `.</description>
+                    <attributeTypes>
+                        <attributeType name="DateTime" />
+                    </attributeTypes>
+                </property>
+                <property key="pickerValueEnd" type="attribute" required="false">
+                    <caption>End time </caption>
+                    <description>The end DateTime value that a user just selected on the picker pannel. Only use this value when you want to get the value in the action handler of the above `On value change`.</description>
+                    <attributeTypes>
+                        <attributeType name="DateTime" />
+                    </attributeTypes>
+                </property>
+                <property key="defaultPickerValueStart" type="attribute" required="false">
+                    <caption>Default start time</caption>
+                    <description>The default start time value on the picker pannel.</description>
+                    <attributeTypes>
+                        <attributeType name="DateTime" />
+                    </attributeTypes>
+                </property>
+                <property key="defaultPickerValueEnd" type="attribute" required="false">
+                    <caption>Default end time</caption>
+                    <description>The default end time value on the picker pannel.</description>
+                    <attributeTypes>
+                        <attributeType name="DateTime" />
+                    </attributeTypes>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Disable Date">
+                <property key="disableDateMode" type="enumeration" defaultValue="off">
+                    <caption>Disable mode</caption>
+                    <description>Disable some dates, so that some invalid dates can not be choosen by user. 'Off' means no date will be disabled. 'Positive' means the dates you set below are the only available dates. 'Negative' means that all the dates excepet for the dates you set below are available.</description>
+                    <enumerationValues>
+                        <enumerationValue key="off">Off</enumerationValue>
+                        <enumerationValue key="positive">Positive</enumerationValue>
+                        <enumerationValue key="negative">Negative</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property key="disableDatesDatasource" type="datasource" isList="true" required="false">
+                    <caption>Disable datasource</caption>
+                    <description></description>
+                </property>
+                <property key="disableDatesAttribute" type="attribute" dataSource="disableDatesDatasource">
+                    <caption>Disable attribute</caption>
+                    <description></description>
+                    <attributeTypes>
+                        <attributeType name="DateTime" />
+                    </attributeTypes>
+                </property>
+            </propertyGroup>
+
+        </propertyGroup>
+        <propertyGroup caption="Cutomize">
+            <propertyGroup caption="Shortcuts">
+                <property key="shortcutsDatasource" type="datasource" isList="true" required="false">
+                    <caption>Datasource of shortcuts</caption>
+                    <description>You can use this to dsiplay some shortcut buttons on the picker pannel to reduce the time to choose a right date.</description>
+                </property>
+                <property key="shortcutsLabelAttribute" type="attribute" dataSource="shortcutsDatasource">
+                    <caption>Attribute of label</caption>
+                    <description>Label will be shown on the shortcut button.</description>
+                    <attributeTypes>
+                        <attributeType name="String" />
+                    </attributeTypes>
+                </property>
+                <property key="shortcutsDateAttribute" type="attribute" dataSource="shortcutsDatasource">
+                    <caption>Attribute of date</caption>
+                    <description>When user click the shortcut button, the corresponding date will be selected. </description>
+                    <attributeTypes>
+                        <attributeType name="DateTime" />
+                    </attributeTypes>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Custom Pannel Footer">
+                <property key="showCustomFooter" type="boolean" defaultValue="false">
+                    <caption>Show custom footer</caption>
+                    <description>Whether show additional widgets on the footer of the picker pannel.</description>
+                </property>
+                <property key="pannelFooterContent" type="widgets" required="false">
+                    <caption>Custom pannel footer</caption>
+                    <description>Put additional widgets on the footer of the picker pannel.</description>
+                </property>
+            </propertyGroup>
+        </propertyGroup>
+        <propertyGroup caption="Common">
+            <systemProperty key="Name" />
+            <systemProperty key="TabIndex" />
         </propertyGroup>
     </properties>
 </widget>

@@ -1,3 +1,4 @@
+import { hidePropertiesIn, hidePropertyIn } from "@mendix/pluggable-widgets-tools";
 import { AntdDateRangePickerPreviewProps } from "../typings/AntdDateRangePickerProps";
 
 export type Platform = "web" | "desktop";
@@ -74,6 +75,7 @@ type TextProps = BaseProps & {
 type DropZoneProps = BaseProps & {
     type: "DropZone";
     property: object; // widgets property object from Values API
+    placeholder: string;
 };
 
 type SelectableProps = BaseProps & {
@@ -98,15 +100,20 @@ export type PreviewProps =
     | DatasourceProps;
 
 export function getProperties(
-    _values: AntdDateRangePickerPreviewProps,
+    values: AntdDateRangePickerPreviewProps,
     defaultProperties: Properties /* , target: Platform*/
 ): Properties {
     // Do the values manipulation here to control the visibility of properties in Studio and Studio Pro conditionally.
-    /* Example
-    if (values.myProperty === "custom") {
-        delete defaultProperties.properties.myOtherProperty;
+    if (values.disableDateMode === "off") {
+        hidePropertiesIn(defaultProperties, values, ["disableDatesDatasource", "disableDatesAttribute"]);
     }
-    */
+    if (values.showCustomFooter === false) {
+        hidePropertyIn(defaultProperties, values, "pannelFooterContent");
+    }
+    if (values.onPickerValueChange === null) {
+        hidePropertiesIn(defaultProperties, values, ["pickerValueStart", "pickerValueEnd"]);
+    }
+
     return defaultProperties;
 }
 
@@ -125,13 +132,82 @@ export function getProperties(
 //     return errors;
 // }
 
-// export function getPreview(values: AntdDateRangePickerPreviewProps, isDarkMode: boolean): PreviewProps {
-//     // Customize your pluggable widget appearance for Studio Pro.
-//     return {
-//         type: "Container",
-//         children: []
-//     }
-// }
+export function getPreview(values: AntdDateRangePickerPreviewProps, _isDarkMode: boolean): PreviewProps {
+    // Customize your pluggable widget appearance for Studio Pro.
+    const calendarSvgImage = `<svg t="1669274393575" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2743" width="200" height="200"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32z m-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z" p-id="2744" fill="#707070"></path></svg>`;
+    const calendarInputPreview: PreviewProps = {
+        type: "RowLayout",
+        columnSize: "grow",
+        padding: 5,
+        borders: true,
+        borderWidth: 1,
+        borderRadius: 5,
+        children: [
+            {
+                type: "Container",
+                grow: 1,
+                children: [
+                    {
+                        type: "Text",
+                        fontSize: 12,
+                        content: "Start time"
+                    }
+                ]
+            },
+            {
+                type: "Container",
+                grow: 0,
+                children: [
+                    {
+                        type: "Text",
+                        fontSize: 12,
+                        content: "-"
+                    }
+                ]
+            },
+            {
+                type: "Container",
+                grow: 1,
+                children: [
+                    {
+                        type: "Text",
+                        fontSize: 12,
+                        content: "End time"
+                    }
+                ]
+            },
+            {
+                type: "Image",
+                document: calendarSvgImage,
+                grow: 0,
+                height: 24
+            }
+        ]
+    };
+    if (!values.showCustomFooter) {
+        return {
+            type: "Container",
+            children: [calendarInputPreview]
+        };
+    } else {
+        const customFooterPreview: PreviewProps = {
+            type: "Container",
+            borders: true,
+            borderWidth: 1,
+            children: [
+                {
+                    type: "DropZone",
+                    property: values.pannelFooterContent,
+                    placeholder: "Drop your custom footer of picker pannel here"
+                }
+            ]
+        };
+        return {
+            type: "Container",
+            children: [calendarInputPreview, customFooterPreview]
+        };
+    }
+}
 
 // export function getCustomCaption(values: AntdDateRangePickerPreviewProps, platform: Platform): string {
 //     return "AntdDateRangePicker";

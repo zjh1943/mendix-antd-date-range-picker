@@ -4,7 +4,7 @@ import { AntdDateRangePickerPreviewProps } from "../typings/AntdDateRangePickerP
 
 export class preview extends Component<AntdDateRangePickerPreviewProps> {
     render(): ReactNode {
-        return <HelloWorldSample sampleText={this.props.sampleText} />;
+        return <HelloWorldSample sampleText={""} />;
     }
 }
 
