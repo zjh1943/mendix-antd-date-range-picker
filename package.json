@@ -10,7 +10,7 @@
   },
   "license": "Apache-2.0",
   "config": {
-    "projectPath": "E:\\MyDocuments\\Mendix\\MyFirstApp-main",       
+    "projectPath": "E:\\MyDocuments\\Mendix\\MyFirstApp-main",
     "mendixHost": "http://localhost:8080",
     "developmentPort": 3000
   },
@@ -37,6 +37,8 @@
     "@types/react-test-renderer": "~17.0.1"
   },
   "dependencies": {
-    "classnames": "^2.2.6"
+    "antd": "^5.0.1",
+    "classnames": "^2.2.6",
+    "dayjs": "^1.11.6"
   }
 }

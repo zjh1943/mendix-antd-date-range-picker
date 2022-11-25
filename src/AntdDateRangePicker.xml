@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <widget id="mendix.antddaterangepicker.AntdDateRangePicker" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
-        supportedPlatform="Web"
-        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    supportedPlatform="Web"
+    xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
     <name>Antd Date Range Picker</name>
     <description>A powerful Mendix pluggable widget used to pick date and time. It brings the ant-deign widget DatePicker into Mendix and implements almost all the features of the original widget</description>
-    <icon/>
+    <icon />
     <properties>
         <propertyGroup caption="General">
             <propertyGroup caption="Main">
+                <property key="picker" type="enumeration" defaultValue="date">
+                    <caption>Picker type</caption>
+                    <description></description>
+                    <enumerationValues>
+                        <enumerationValue key="date">Date</enumerationValue>
+                        <enumerationValue key="week">Week</enumerationValue>
+                        <enumerationValue key="month">Month</enumerationValue>
+                        <enumerationValue key="quarter">Quarter</enumerationValue>
+                        <enumerationValue key="year">Year</enumerationValue>
+                    </enumerationValues>
+                </property>
                 <property key="defaultValueStart" type="attribute" required="false">
                     <caption>Default start time</caption>
                     <description>The default start time value when the widget shows.</description>
-                    <attributeTypes>
-                        <attributeType name="DateTime" />
-                    </attributeTypes>
-                </property>
-                <property key="valueStart" type="attribute" required="false">
-                    <caption>Start time</caption>
-                    <description>The start time value.</description>
                     <attributeTypes>
                         <attributeType name="DateTime" />
                     </attributeTypes>
@@ -30,6 +34,27 @@
                         <attributeType name="DateTime" />
                     </attributeTypes>
                 </property>
+                <property key="format" type="string" required="false" defaultValue="YYYY-MM-DD">
+                    <caption>Format</caption>
+                    <description>The format of DateTime value shown on the input frame. e.g. YYYY/MM/DD HH:mm:ss.</description>
+                </property>
+                <property key="placeholderStart" type="string" required="false">
+                    <caption>Start placeholder</caption>
+                    <description></description>
+                </property>
+                <property key="placeholderEnd" type="string" required="false">
+                    <caption>End placeholder</caption>
+                    <description></description>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Control">
+                <property key="valueStart" type="attribute" required="false">
+                    <caption>Start time</caption>
+                    <description>The start time value.</description>
+                    <attributeTypes>
+                        <attributeType name="DateTime" />
+                    </attributeTypes>
+                </property>
                 <property key="valueEnd" type="attribute" required="false">
                     <caption>End time</caption>
                     <description>The end time value.</description>
@@ -37,21 +62,36 @@
                         <attributeType name="DateTime" />
                     </attributeTypes>
                 </property>
-                <property key="format" type="string" required="false" defaultValue="YYYY-MM-DD">
-                    <caption>Format</caption>
-                    <description>The format of DateTime value shown on the input frame. e.g. YYYY/MM/DD HH:mm:ss.</description>
-                </property>
-            </propertyGroup>
-            <propertyGroup caption="Events">
                 <property key="onChange" type="action" required="false">
                     <caption>On value change</caption>
                     <description>Will be triggered when eithter start value or end value is changed.</description>
                 </property>
+                <property key="open" type="attribute" required="false">
+                    <caption>Picker open</caption>
+                    <description>An attribute to control the open status of the picker.</description>
+                    <attributeTypes>
+                        <attributeType name="Boolean" />
+                    </attributeTypes>
+                </property>
+                <property key="onOpenChange" type="action" required="false">
+                    <caption>On open change</caption>
+                    <description>Will be triggered when the picker pannel is opened or closed.</description>
+                </property>
             </propertyGroup>
-            <propertyGroup caption="Show Time">
+            <propertyGroup caption="Views">
                 <property key="showTime" type="boolean" required="true" defaultValue="false">
                     <caption>Show time</caption>
-                    <description>Whether show time picker on the picker pannel.</description>
+                    <description>Whether show time picker on the picker pannel. If yes, you'd better add "HH:mm:ss" to the `format` property to show the time part</description>
+                </property>
+                <property key="placement" type="enumeration" defaultValue="bottomLeft">
+                    <caption>Plannel placement</caption>
+                    <description>On which place is the picker pannel placed to the input frame.</description>
+                    <enumerationValues>
+                        <enumerationValue key="bottomLeft">Bottom Left</enumerationValue>
+                        <enumerationValue key="bottomRight">Bottom Right</enumerationValue>
+                        <enumerationValue key="topLeft">Top Left</enumerationValue>
+                        <enumerationValue key="topRight">Top Right</enumerationValue>
+                    </enumerationValues>
                 </property>
             </propertyGroup>
             <propertyGroup caption="System">
@@ -60,7 +100,7 @@
             </propertyGroup>
         </propertyGroup>
         <propertyGroup caption="Advanced">
-            <propertyGroup caption="Allow Empty">
+            <propertyGroup caption="Main">
                 <property key="allowEmptyStart" type="boolean" defaultValue="false">
                     <caption>Allow start time empty.</caption>
                     <description></description>
@@ -69,8 +109,21 @@
                     <caption>Allow end time empty.</caption>
                     <description></description>
                 </property>
+                <property key="autoFocus" type="boolean" required="true" defaultValue="false">
+                    <caption>Auto focus</caption>
+                    <description>Whether auto get focus when shown.</description>
+                </property>
+                <property key="inputReadOnly" type="boolean" required="true" defaultValue="false">
+                    <caption>Input readonly</caption>
+                    <description>Set the input as readonly.So that, when on mobile device, the virtual keyboard will not be open.</description>
+                </property>
             </propertyGroup>
-
+            <propertyGroup caption="Locale">
+                <property key="locale" type="string" required="true" defaultValue="false">
+                    <caption>Locale</caption>
+                    <description>Set the display language. e.g. zh_CN, en_US </description>
+                </property>
+            </propertyGroup>
             <propertyGroup caption="Picker Value">
                 <property key="onPickerValueChange" type="action" required="false">
                     <caption>On value change</caption>
@@ -127,10 +180,35 @@
                     </attributeTypes>
                 </property>
             </propertyGroup>
-
         </propertyGroup>
-        <propertyGroup caption="Cutomize">
+        <propertyGroup caption="Cutomize View">
+            <propertyGroup caption="Common">
+                <property key="allowClear" type="boolean" required="true" defaultValue="true">
+                    <caption>Allow clear</caption>
+                    <description>Whether show clear button.</description>
+                </property>
+                <property key="bordered" type="boolean" required="true" defaultValue="true">
+                    <caption>Bordered</caption>
+                    <description>Whether show border out of the input frame.</description>
+                </property>
+                <property key="popupClassName" type="string" required="false">
+                    <caption>Class of popup</caption>
+                    <description></description>
+                </property>
+                <property key="popupStyle" type="string" required="false">
+                    <caption>Style of popup</caption>
+                    <description></description>
+                </property>
+            </propertyGroup>
             <propertyGroup caption="Shortcuts">
+                <property key="showNow" type="boolean" required="true" defaultValue="false">
+                    <caption>Show now button</caption>
+                    <description>Whether show a button which can help to quick choose the "Now" time.</description>
+                </property>
+                <property key="showToday" type="boolean" required="true" defaultValue="false">
+                    <caption>Show today button</caption>
+                    <description>Whether show a button which can help to quick choose the "Today" date.</description>
+                </property>
                 <property key="shortcutsDatasource" type="datasource" isList="true" required="false">
                     <caption>Datasource of shortcuts</caption>
                     <description>You can use this to dsiplay some shortcut buttons on the picker pannel to reduce the time to choose a right date.</description>

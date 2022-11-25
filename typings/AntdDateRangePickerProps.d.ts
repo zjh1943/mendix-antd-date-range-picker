@@ -6,6 +6,10 @@
 import { ComponentType, CSSProperties, ReactNode } from "react";
 import { ActionValue, EditableValue, ListValue, ListAttributeValue } from "mendix";
 
+export type PickerEnum = "date" | "week" | "month" | "quarter" | "year";
+
+export type PlacementEnum = "bottomLeft" | "bottomRight" | "topLeft" | "topRight";
+
 export type DisableDateModeEnum = "off" | "positive" | "negative";
 
 export interface AntdDateRangePickerContainerProps {
@@ -13,15 +17,24 @@ export interface AntdDateRangePickerContainerProps {
     class: string;
     style?: CSSProperties;
     tabIndex?: number;
+    picker: PickerEnum;
     defaultValueStart?: EditableValue<Date>;
-    valueStart?: EditableValue<Date>;
     defaultValueEnd?: EditableValue<Date>;
-    valueEnd?: EditableValue<Date>;
     format: string;
+    placeholderStart: string;
+    placeholderEnd: string;
+    valueStart?: EditableValue<Date>;
+    valueEnd?: EditableValue<Date>;
     onChange?: ActionValue;
+    open?: EditableValue<boolean>;
+    onOpenChange?: ActionValue;
     showTime: boolean;
+    placement: PlacementEnum;
     allowEmptyStart: boolean;
     allowEmptyEnd: boolean;
+    autoFocus: boolean;
+    inputReadOnly: boolean;
+    locale: string;
     onPickerValueChange?: ActionValue;
     pickerValueStart?: EditableValue<Date>;
     pickerValueEnd?: EditableValue<Date>;
@@ -30,6 +43,12 @@ export interface AntdDateRangePickerContainerProps {
     disableDateMode: DisableDateModeEnum;
     disableDatesDatasource?: ListValue;
     disableDatesAttribute?: ListAttributeValue<Date>;
+    allowClear: boolean;
+    bordered: boolean;
+    popupClassName: string;
+    popupStyle: string;
+    showNow: boolean;
+    showToday: boolean;
     shortcutsDatasource?: ListValue;
     shortcutsLabelAttribute?: ListAttributeValue<string>;
     shortcutsDateAttribute?: ListAttributeValue<Date>;
@@ -46,15 +65,24 @@ export interface AntdDateRangePickerPreviewProps {
     style: string;
     styleObject?: CSSProperties;
     readOnly: boolean;
+    picker: PickerEnum;
     defaultValueStart: string;
-    valueStart: string;
     defaultValueEnd: string;
-    valueEnd: string;
     format: string;
+    placeholderStart: string;
+    placeholderEnd: string;
+    valueStart: string;
+    valueEnd: string;
     onChange: {} | null;
+    open: string;
+    onOpenChange: {} | null;
     showTime: boolean;
+    placement: PlacementEnum;
     allowEmptyStart: boolean;
     allowEmptyEnd: boolean;
+    autoFocus: boolean;
+    inputReadOnly: boolean;
+    locale: string;
     onPickerValueChange: {} | null;
     pickerValueStart: string;
     pickerValueEnd: string;
@@ -63,6 +91,12 @@ export interface AntdDateRangePickerPreviewProps {
     disableDateMode: DisableDateModeEnum;
     disableDatesDatasource: {} | { type: string } | null;
     disableDatesAttribute: string;
+    allowClear: boolean;
+    bordered: boolean;
+    popupClassName: string;
+    popupStyle: string;
+    showNow: boolean;
+    showToday: boolean;
     shortcutsDatasource: {} | { type: string } | null;
     shortcutsLabelAttribute: string;
     shortcutsDateAttribute: string;
