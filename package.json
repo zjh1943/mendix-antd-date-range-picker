@@ -10,7 +10,7 @@
   },
   "license": "Apache-2.0",
   "config": {
-    "projectPath": "E:\\MyDocuments\\Mendix\\MyFirstApp-main",
+    "projectPath": "E:\\MyDocuments\\Mendix\\demo-AntdWidgets-main",
     "mendixHost": "http://localhost:8080",
     "developmentPort": 3000
   },

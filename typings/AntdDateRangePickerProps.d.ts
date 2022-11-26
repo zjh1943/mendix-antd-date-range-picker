@@ -10,6 +10,8 @@ export type PickerEnum = "date" | "week" | "month" | "quarter" | "year";
 
 export type PlacementEnum = "bottomLeft" | "bottomRight" | "topLeft" | "topRight";
 
+export type LocaleEnum = "zh_CN" | "en_US";
+
 export type DisableDateModeEnum = "off" | "positive" | "negative";
 
 export interface AntdDateRangePickerContainerProps {
@@ -34,10 +36,7 @@ export interface AntdDateRangePickerContainerProps {
     allowEmptyEnd: boolean;
     autoFocus: boolean;
     inputReadOnly: boolean;
-    locale: string;
-    onPickerValueChange?: ActionValue;
-    pickerValueStart?: EditableValue<Date>;
-    pickerValueEnd?: EditableValue<Date>;
+    locale: LocaleEnum;
     defaultPickerValueStart?: EditableValue<Date>;
     defaultPickerValueEnd?: EditableValue<Date>;
     disableDateMode: DisableDateModeEnum;
@@ -46,12 +45,10 @@ export interface AntdDateRangePickerContainerProps {
     allowClear: boolean;
     bordered: boolean;
     popupClassName: string;
-    popupStyle: string;
-    showNow: boolean;
-    showToday: boolean;
     shortcutsDatasource?: ListValue;
     shortcutsLabelAttribute?: ListAttributeValue<string>;
-    shortcutsDateAttribute?: ListAttributeValue<Date>;
+    shortcutsValueStartAttribute?: ListAttributeValue<Date>;
+    shortcutsValueEndAttribute?: ListAttributeValue<Date>;
     showCustomFooter: boolean;
     pannelFooterContent?: ReactNode;
 }
@@ -82,10 +79,7 @@ export interface AntdDateRangePickerPreviewProps {
     allowEmptyEnd: boolean;
     autoFocus: boolean;
     inputReadOnly: boolean;
-    locale: string;
-    onPickerValueChange: {} | null;
-    pickerValueStart: string;
-    pickerValueEnd: string;
+    locale: LocaleEnum;
     defaultPickerValueStart: string;
     defaultPickerValueEnd: string;
     disableDateMode: DisableDateModeEnum;
@@ -94,12 +88,10 @@ export interface AntdDateRangePickerPreviewProps {
     allowClear: boolean;
     bordered: boolean;
     popupClassName: string;
-    popupStyle: string;
-    showNow: boolean;
-    showToday: boolean;
     shortcutsDatasource: {} | { type: string } | null;
     shortcutsLabelAttribute: string;
-    shortcutsDateAttribute: string;
+    shortcutsValueStartAttribute: string;
+    shortcutsValueEndAttribute: string;
     showCustomFooter: boolean;
     pannelFooterContent: { widgetCount: number; renderer: ComponentType<{ caption?: string }> };
 }

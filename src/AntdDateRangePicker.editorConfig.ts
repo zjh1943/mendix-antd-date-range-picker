@@ -110,9 +110,9 @@ export function getProperties(
     if (values.showCustomFooter === false) {
         hidePropertyIn(defaultProperties, values, "pannelFooterContent");
     }
-    if (values.onPickerValueChange === null) {
-        hidePropertiesIn(defaultProperties, values, ["pickerValueStart", "pickerValueEnd"]);
-    }
+    // if (values.onPickerValueChange === null) {
+    //     hidePropertiesIn(defaultProperties, values, ["pickerValueStart", "pickerValueEnd"]);
+    // }
 
     return defaultProperties;
 }

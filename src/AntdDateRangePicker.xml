@@ -119,13 +119,17 @@
                 </property>
             </propertyGroup>
             <propertyGroup caption="Locale">
-                <property key="locale" type="string" required="true" defaultValue="false">
+                <property key="locale" type="enumeration" defaultValue="zh_CN" >
                     <caption>Locale</caption>
-                    <description>Set the display language. e.g. zh_CN, en_US </description>
+                    <description>Set the display language. Currently only support zh_CN and en_US </description>
+                    <enumerationValues>
+                        <enumerationValue key="zh_CN">zh_CN</enumerationValue>
+                        <enumerationValue key="en_US">en_US</enumerationValue>
+                    </enumerationValues>
                 </property>
             </propertyGroup>
             <propertyGroup caption="Picker Value">
-                <property key="onPickerValueChange" type="action" required="false">
+                <!-- <property key="onPickerValueChange" type="action" required="false">
                     <caption>On value change</caption>
                     <description>Will be triggered when user select a date on the picker pannel.</description>
                 </property>
@@ -142,7 +146,7 @@
                     <attributeTypes>
                         <attributeType name="DateTime" />
                     </attributeTypes>
-                </property>
+                </property> -->
                 <property key="defaultPickerValueStart" type="attribute" required="false">
                     <caption>Default start time</caption>
                     <description>The default start time value on the picker pannel.</description>
@@ -195,20 +199,12 @@
                     <caption>Class of popup</caption>
                     <description></description>
                 </property>
-                <property key="popupStyle" type="string" required="false">
+                <!-- <property key="popupStyle" type="string" required="false">
                     <caption>Style of popup</caption>
                     <description></description>
-                </property>
+                </property> -->
             </propertyGroup>
             <propertyGroup caption="Shortcuts">
-                <property key="showNow" type="boolean" required="true" defaultValue="false">
-                    <caption>Show now button</caption>
-                    <description>Whether show a button which can help to quick choose the "Now" time.</description>
-                </property>
-                <property key="showToday" type="boolean" required="true" defaultValue="false">
-                    <caption>Show today button</caption>
-                    <description>Whether show a button which can help to quick choose the "Today" date.</description>
-                </property>
                 <property key="shortcutsDatasource" type="datasource" isList="true" required="false">
                     <caption>Datasource of shortcuts</caption>
                     <description>You can use this to dsiplay some shortcut buttons on the picker pannel to reduce the time to choose a right date.</description>
@@ -220,9 +216,16 @@
                         <attributeType name="String" />
                     </attributeTypes>
                 </property>
-                <property key="shortcutsDateAttribute" type="attribute" dataSource="shortcutsDatasource">
-                    <caption>Attribute of date</caption>
-                    <description>When user click the shortcut button, the corresponding date will be selected. </description>
+                <property key="shortcutsValueStartAttribute" type="attribute" dataSource="shortcutsDatasource">
+                    <caption>Start date</caption>
+                    <description>When user click the shortcut button, the corresponding start date will be selected. </description>
+                    <attributeTypes>
+                        <attributeType name="DateTime" />
+                    </attributeTypes>
+                </property>
+                <property key="shortcutsValueEndAttribute" type="attribute" dataSource="shortcutsDatasource">
+                    <caption>End date</caption>
+                    <description>When user click the shortcut button, the corresponding end date will be selected. </description>
                     <attributeTypes>
                         <attributeType name="DateTime" />
                     </attributeTypes>
