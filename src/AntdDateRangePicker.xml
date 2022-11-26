@@ -20,7 +20,7 @@
                         <enumerationValue key="year">Year</enumerationValue>
                     </enumerationValues>
                 </property>
-                <property key="defaultValueStart" type="attribute" required="false">
+                <!-- <property key="defaultValueStart" type="attribute" required="false">
                     <caption>Default start time</caption>
                     <description>The default start time value when the widget shows.</description>
                     <attributeTypes>
@@ -33,18 +33,10 @@
                     <attributeTypes>
                         <attributeType name="DateTime" />
                     </attributeTypes>
-                </property>
+                </property> -->
                 <property key="format" type="string" required="false" defaultValue="YYYY-MM-DD">
                     <caption>Format</caption>
                     <description>The format of DateTime value shown on the input frame. e.g. YYYY/MM/DD HH:mm:ss.</description>
-                </property>
-                <property key="placeholderStart" type="string" required="false">
-                    <caption>Start placeholder</caption>
-                    <description></description>
-                </property>
-                <property key="placeholderEnd" type="string" required="false">
-                    <caption>End placeholder</caption>
-                    <description></description>
                 </property>
             </propertyGroup>
             <propertyGroup caption="Control">
@@ -66,17 +58,7 @@
                     <caption>On value change</caption>
                     <description>Will be triggered when eithter start value or end value is changed.</description>
                 </property>
-                <property key="open" type="attribute" required="false">
-                    <caption>Picker open</caption>
-                    <description>An attribute to control the open status of the picker.</description>
-                    <attributeTypes>
-                        <attributeType name="Boolean" />
-                    </attributeTypes>
-                </property>
-                <property key="onOpenChange" type="action" required="false">
-                    <caption>On open change</caption>
-                    <description>Will be triggered when the picker pannel is opened or closed.</description>
-                </property>
+               
             </propertyGroup>
             <propertyGroup caption="Views">
                 <property key="showTime" type="boolean" required="true" defaultValue="false">
@@ -126,6 +108,19 @@
                         <enumerationValue key="zh_CN">zh_CN</enumerationValue>
                         <enumerationValue key="en_US">en_US</enumerationValue>
                     </enumerationValues>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Picker Open State">
+                <property key="open" type="attribute" required="false">
+                    <caption>Picker open</caption>
+                    <description>An attribute to control the open status of the picker.</description>
+                    <attributeTypes>
+                        <attributeType name="Boolean" />
+                    </attributeTypes>
+                </property>
+                <property key="onOpenChange" type="action" required="false">
+                    <caption>On open change</caption>
+                    <description>Will be triggered when the picker pannel is opened or closed.</description>
                 </property>
             </propertyGroup>
             <propertyGroup caption="Picker Value">
@@ -187,6 +182,14 @@
         </propertyGroup>
         <propertyGroup caption="Cutomize View">
             <propertyGroup caption="Common">
+                <property key="placeholderStart" type="string" required="false">
+                    <caption>Start placeholder</caption>
+                    <description></description>
+                </property>
+                <property key="placeholderEnd" type="string" required="false">
+                    <caption>End placeholder</caption>
+                    <description></description>
+                </property>
                 <property key="allowClear" type="boolean" required="true" defaultValue="true">
                     <caption>Allow clear</caption>
                     <description>Whether show clear button.</description>

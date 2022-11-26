@@ -33,30 +33,30 @@ export class AntdDateRangePicker extends Component<AntdDateRangePickerContainerP
             placeholder: [props.placeholderStart, props.placeholderEnd]
         };
 
-        if (props.defaultValueStart !== undefined || props.defaultValueEnd !== undefined) {
-            const defaultValue: RangeValue = [null, null];
-            if (props.defaultValueStart?.status === "available") {
-                defaultValue[0] = dayjs(props.defaultValueStart?.value);
-            }
-            if (props.defaultValueEnd?.status === "available") {
-                defaultValue[1] = dayjs(props.defaultValueEnd?.value);
-            }
-            console.log(`default value: [ ${defaultValue[0]?.toString()}, ${defaultValue[1]?.toString()}]`);
+        // if (props.defaultValueStart !== undefined || props.defaultValueEnd !== undefined) {
+        //     const defaultValue: RangeValue = [null, null];
+        //     if (props.defaultValueStart?.status === "available") {
+        //         defaultValue[0] = dayjs(props.defaultValueStart?.value);
+        //     }
+        //     if (props.defaultValueEnd?.status === "available") {
+        //         defaultValue[1] = dayjs(props.defaultValueEnd?.value);
+        //     }
+        //     console.log(`default value: [ ${defaultValue[0]?.toString()}, ${defaultValue[1]?.toString()}]`);
 
-            if (defaultValue[0] !== null || defaultValue[1] != null) {
-                console.log(`default value: has set`);
-                pickerProps.defaultValue = defaultValue;
-            }
-        }
+        //     if (defaultValue[0] !== null || defaultValue[1] != null) {
+        //         console.log(`default value: has set`);
+        //         pickerProps.defaultValue = defaultValue;
+        //     }
+        // }
 
         // === sub group Control ===
         if (props.valueStart !== undefined || props.valueEnd !== undefined) {
             console.log(`value from mendix : [ ${props.valueStart?.value}, ${props.valueEnd?.value}]`);
             const value: RangeValue = [null, null];
-            if (props.valueStart?.status === "available") {
+            if (props.valueStart?.status === "available" && props.valueStart.value) {
                 value[0] = dayjs(props.valueStart?.value);
             }
-            if (props.valueEnd?.status === "available") {
+            if (props.valueEnd?.status === "available" && props.valueEnd.value) {
                 value[1] = dayjs(props.valueEnd?.value);
             }
             console.log(`value for antd: [ ${value[0]?.toString()}, ${value[1]?.toString()}]`);
@@ -64,24 +64,16 @@ export class AntdDateRangePicker extends Component<AntdDateRangePickerContainerP
         }
 
         pickerProps.onChange = dates => {
-            console.log(`onChange: dates = [ ${dates![0]?.toDate()}, ${dates![1]?.toDate()}]`);
-            props.valueStart?.setValue(dates![0]?.toDate());
-            props.valueEnd?.setValue(dates![1]?.toDate());
+            console.log(`onChange: dates = `, dates);
+            if (dates) {
+                props.valueStart?.setValue(dates![0]?.toDate());
+                props.valueEnd?.setValue(dates![1]?.toDate());
+            } else {
+                props.valueStart?.setValue(undefined);
+                props.valueEnd?.setValue(undefined);
+            }
             if (props.onChange?.canExecute) {
                 props.onChange?.execute();
-            }
-        };
-
-        if (props.open?.status === "available") {
-            console.log(`open: ${props.open?.value}`);
-            pickerProps.open = props.open?.value;
-        }
-
-        pickerProps.onOpenChange = (open: boolean) => {
-            console.log(`onOpenChange: open = ${open}`);
-            props.open?.setValue(open);
-            if (props.onOpenChange?.canExecute) {
-                props.onOpenChange?.execute();
             }
         };
 
@@ -105,6 +97,20 @@ export class AntdDateRangePicker extends Component<AntdDateRangePickerContainerP
         } else {
             pickerProps.locale = zh_CN;
         }
+
+        // === sub group Picker Open State ===
+        if (props.open?.status === "available") {
+            console.log(`open: ${props.open?.value}`);
+            pickerProps.open = props.open?.value;
+        }
+
+        pickerProps.onOpenChange = (open: boolean) => {
+            console.log(`onOpenChange: open = ${open}`);
+            props.open?.setValue(open);
+            if (props.onOpenChange?.canExecute) {
+                props.onOpenChange?.execute();
+            }
+        };
 
         // === sub group Picker Value ===
         if (props.defaultPickerValueStart !== undefined || props.defaultPickerValueEnd !== undefined) {
