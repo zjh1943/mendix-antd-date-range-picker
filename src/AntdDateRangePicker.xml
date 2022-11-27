@@ -34,7 +34,7 @@
                         <attributeType name="DateTime" />
                     </attributeTypes>
                 </property> -->
-                <property key="format" type="string" required="false" defaultValue="YYYY-MM-DD">
+                <property key="format" type="string" required="false">
                     <caption>Format</caption>
                     <description>The format of DateTime value shown on the input frame. e.g. YYYY/MM/DD HH:mm:ss.</description>
                 </property>
@@ -182,6 +182,15 @@
         </propertyGroup>
         <propertyGroup caption="Cutomize View">
             <propertyGroup caption="Common">
+                <property key="size" type="enumeration" required="true" defaultValue="middle">
+                    <caption>Input frame size</caption>
+                    <description></description>
+                    <enumerationValues>
+                        <enumerationValue key="small">Small</enumerationValue>
+                        <enumerationValue key="middle">Middle</enumerationValue>
+                        <enumerationValue key="large">Large</enumerationValue>
+                    </enumerationValues>
+                </property>
                 <property key="placeholderStart" type="string" required="false">
                     <caption>Start placeholder</caption>
                     <description></description>

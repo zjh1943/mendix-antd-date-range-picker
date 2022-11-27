@@ -14,6 +14,8 @@ export type LocaleEnum = "zh_CN" | "en_US";
 
 export type DisableDateModeEnum = "off" | "positive" | "negative";
 
+export type SizeEnum = "small" | "middle" | "large";
+
 export interface AntdDateRangePickerContainerProps {
     name: string;
     class: string;
@@ -38,6 +40,7 @@ export interface AntdDateRangePickerContainerProps {
     disableDateMode: DisableDateModeEnum;
     disableDatesDatasource?: ListValue;
     disableDatesAttribute?: ListAttributeValue<Date>;
+    size: SizeEnum;
     placeholderStart: string;
     placeholderEnd: string;
     allowClear: boolean;
@@ -79,6 +82,7 @@ export interface AntdDateRangePickerPreviewProps {
     disableDateMode: DisableDateModeEnum;
     disableDatesDatasource: {} | { type: string } | null;
     disableDatesAttribute: string;
+    size: SizeEnum;
     placeholderStart: string;
     placeholderEnd: string;
     allowClear: boolean;

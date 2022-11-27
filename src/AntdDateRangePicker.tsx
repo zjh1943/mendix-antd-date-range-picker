@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 
 
 import { AntdDateRangePickerContainerProps } from "../typings/AntdDateRangePickerProps";
+import { Alert } from "./components/Alert";
 
 const { RangePicker } = DatePicker;
 
@@ -11,6 +12,8 @@ import "./ui/AntdDateRangePicker.css";
 import { RangePickerProps } from "antd/es/date-picker";
 import zh_CN from "antd/es/date-picker/locale/zh_CN";
 import en_US from "antd/es/date-picker/locale/en_US";
+
+import "./ui/AntdDateRangePicker.scss";
 
 type RangeValue = [dayjs.Dayjs | null, dayjs.Dayjs | null] | null;
 
@@ -63,6 +66,11 @@ export class AntdDateRangePicker extends Component<AntdDateRangePickerContainerP
             pickerProps.value = value;
         }
 
+        const hasError = !!props.valueStart?.validation || !!props.valueEnd?.validation;
+        const startValueFeedback = props.valueStart?.validation;
+        const endValueFeedback = props.valueEnd?.validation;
+        pickerProps.status = hasError ? "error" : undefined;
+
         pickerProps.onChange = dates => {
             console.log(`onChange: dates = `, dates);
             if (dates) {
@@ -80,7 +88,7 @@ export class AntdDateRangePicker extends Component<AntdDateRangePickerContainerP
         // === sub group Views ===
         pickerProps.showTime = props.showTime;
         pickerProps.placement = props.placement;
-        pickerProps.disabled = props.valueStart?.readOnly || props.valueEnd?.readOnly;
+        pickerProps.disabled = [!!props.valueStart?.readOnly, !!props.valueEnd?.readOnly];
 
         // ====================================
         // === property group Advanced ===
@@ -159,6 +167,7 @@ export class AntdDateRangePicker extends Component<AntdDateRangePickerContainerP
         // ====================================
 
         // === sub group Common ===
+        pickerProps.size = props.size;
         pickerProps.allowClear = props.allowClear;
         pickerProps.bordered = props.bordered;
         pickerProps.popupClassName = props.popupClassName;
@@ -193,6 +202,12 @@ export class AntdDateRangePicker extends Component<AntdDateRangePickerContainerP
         pickerProps.className = props.class;
         pickerProps.style = props.style;
 
-        return <RangePicker {...pickerProps} />;
+        return (
+            <div className="mx-antd-date-range-picker">
+                <RangePicker {...pickerProps} />
+                <Alert>{startValueFeedback}</Alert>
+                <Alert>{endValueFeedback}</Alert>
+            </div>
+        );
     }
 }
