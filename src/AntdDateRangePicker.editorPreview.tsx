@@ -9,5 +9,5 @@ export class preview extends Component<AntdDateRangePickerPreviewProps> {
 }
 
 export function getPreviewCss(): string {
-    return require("./ui/AntdDateRangePicker.css");
+    return require("./ui/AntdDateRangePicker.scss");
 }

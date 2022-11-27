@@ -2,6 +2,7 @@ tests/testProject/
 .DS_Store
 .idea
 .vscode
+.vs
 dist
 node_modules
 .env
