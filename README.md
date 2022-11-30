@@ -20,7 +20,13 @@
     1. 从[这里](https://github.com/zjh1943/mendix-antd-date-range-picker/releases)下载 mpk 文件.
     3. 把 mpk 文件复制到你的 Mendix Project 目录 `{YourMendixProjectFolder}/widgets/`.
     4. 用 Mendix Studio Pro 打开你的 Mendix Project，然后点击菜单 `Menu > App > Synchronize App Directory`.
-2. 将 `Antd Date Range Picker` 添加组件到页面中。
+2. 使用 `Antd Date Range Picker`。
+    1. 选择任意页面，向页面添加一个 `DataView`，并为 `DataView` 设置好 `Datasource`。
+    2. 向上述 `DataView` 中添加 `Antd Date Range Picker` 组件。可以从 Mendix Studio Pro 的右侧 Toolbox 中找到。
+    3. 为该组件设置属性。双击该组件，做如下设置：
+        1. 设置 `Picker type`。
+        2. 设置 `Start time` 和 `End time` 为实体的两个属性。用来设置和读取组件的开始和结束时间。
+        3. 设置 `On value change` 为一个 `Nanoflow`. 新建一个 `Nanoflow`，在该 `Nanoflow` 中即可读取 `Start time` 和 `End time` 绑定的属性。
 
 ## Demo 项目
 
