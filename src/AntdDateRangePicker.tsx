@@ -2,7 +2,6 @@ import { Component, ReactNode, createElement, CSSProperties } from "react";
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
 
-
 import { AntdDateRangePickerContainerProps } from "../typings/AntdDateRangePickerProps";
 import { Alert } from "./components/Alert";
 
@@ -142,7 +141,7 @@ export class AntdDateRangePicker extends Component<AntdDateRangePickerContainerP
         if (props.disableDateMode !== "off" && props.disableDatesDatasource?.status === "available") {
             pickerProps.disabledDate = date => {
                 if (props.disableDateMode === "negative") {
-                    props.disableDatesDatasource?.items?.forEach(item => {
+                    props.disableDatesDatasource?.items?.forEach((item: any) => {
                         const newDate = dayjs(props.disableDatesAttribute?.get(item).value);
                         if (date.isSame(newDate, "day")) {
                             return false;
@@ -151,7 +150,7 @@ export class AntdDateRangePicker extends Component<AntdDateRangePickerContainerP
                     return true;
                 } else {
                     // props.disableDateMode === "positive"
-                    props.disableDatesDatasource?.items?.forEach(item => {
+                    props.disableDatesDatasource?.items?.forEach((item: any) => {
                         const newDate = dayjs(props.disableDatesAttribute?.get(item).value);
                         if (date.isSame(newDate, "day")) {
                             return true;
@@ -177,7 +176,7 @@ export class AntdDateRangePicker extends Component<AntdDateRangePickerContainerP
         // pickerProps.showToday = props.showToday;
 
         if (props.shortcutsDatasource?.status === "available") {
-            pickerProps.presets = props.shortcutsDatasource.items!.map(item => {
+            pickerProps.presets = props.shortcutsDatasource.items!.map((item: any) => {
                 const label = props.shortcutsLabelAttribute?.get(item).value;
                 const startValue = props.shortcutsValueStartAttribute?.get(item).value;
                 const endValue = props.shortcutsValueEndAttribute?.get(item).value;
