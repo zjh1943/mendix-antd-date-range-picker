@@ -32,7 +32,7 @@ export class AntdDateRangePicker extends Component<AntdDateRangePickerContainerP
         } = {
             picker: props.picker,
             format: props.format,
-            placeholder: [props.placeholderStart, props.placeholderEnd]
+            
         };
 
         // if (props.defaultValueStart !== undefined || props.defaultValueEnd !== undefined) {
@@ -170,6 +170,10 @@ export class AntdDateRangePicker extends Component<AntdDateRangePickerContainerP
         pickerProps.allowClear = props.allowClear;
         pickerProps.bordered = props.bordered;
         pickerProps.popupClassName = props.popupClassName;
+
+        if (props.placeholderStart || props.placeholderEnd) {
+            pickerProps.placeholder = [props.placeholderStart, props.placeholderEnd];
+        }
 
         // === property group Shortcuts ===
         // pickerProps.showNow = props.showNow;
