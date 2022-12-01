@@ -1,6 +1,6 @@
 ## 介绍
 
-一个用来选择日期（或时间）范围的 Mendix Widget，实现了 Ant Design(antd) 中的 [`RangePicker`](https://ant.design/components/date-picker-cn#rangepicker) 的绝大部分接口。你可以去[这里](https://ant.design/components/date-picker-cn#rangepicker)查看原始的 antd 组件的各种特性。
+AntdDatePicker（[Github地址](https://github.com/zjh1943/mendix-antd-date-range-picker)）是一个用来选择时间范围的 Mendix Widget，实现了 Ant Design 中的 [`RangePicker`](https://ant.design/components/date-picker-cn#rangepicker) 的绝大部分接口。
 
 ![antd date range picker](./doc/DateRangePicker.png)
 
@@ -16,18 +16,21 @@
 
 ## 快速安装和使用
 
-1. 将该组件添加到 Mendix Project 中.
-    1. 从[这里](https://github.com/zjh1943/mendix-antd-date-range-picker/releases)下载 mpk 文件.
-    3. 把 mpk 文件复制到你的 Mendix Project 目录 `{YourMendixProjectFolder}/widgets/`.
-    4. 用 Mendix Studio Pro 打开你的 Mendix Project，然后点击菜单 `Menu > App > Synchronize App Directory`.
-2. 使用 `Antd Date Range Picker`。
-    1. 选择任意页面，向页面添加一个 `DataView`，并为 `DataView` 设置好 `Datasource`。
-    2. 向上述 `DataView` 中添加 `Antd Date Range Picker` 组件。可以从 Mendix Studio Pro 的右侧 Toolbox 中找到。
-    3. 为该组件设置属性。双击该组件，做如下设置：
-        1. 设置 `Picker type`。
-        2. 设置 `Start time` 和 `End time` 为实体的两个属性。用来设置和读取组件的开始和结束时间。
-        3. 设置 `On value change` 为一个 `Nanoflow`. 新建一个 `Nanoflow`，在该 `Nanoflow` 中即可读取 `Start time` 和 `End time` 绑定的属性。
+### 将该组件添加到 Mendix Project 中
+1. 从[这里](https://github.com/zjh1943/mendix-antd-date-range-picker/releases)下载 mpk 文件.
+3. 把 mpk 文件复制到你的 Mendix Project 目录 `{YourMendixProjectFolder}/widgets/`.
+4. 用 Mendix Studio Pro 打开你的 Mendix Project，然后点击菜单 `Menu > App > Synchronize App Directory`.
 
+### 快速配置组件
+
+1. 选择任意页面，向页面添加一个 `DataView`，并为 `DataView` 设置好 `Datasource`。![Alt text](doc/quick-use-step-1.png)
+2. 向上述 `DataView` 中添加 `Antd Date Range Picker` 组件。可以从 Mendix Studio Pro 的右侧 Toolbox 中找到。![Alt text](doc/quick-use-step-2.png)
+3. 为该组件设置必要的属性。包括： `Picker Type`, `Start time`, `End time`, `On value change` :
+    * 设置 `Picker type`。可选择默认的 `Date`。
+    * 设置 `Start time` 和 `End time` 为实体的两个属性。用来设置和读取组件的开始和结束时间。
+    * 设置 `On value change` 为 `Nanoflow`，选择新建一个 `Nanoflow`。![Alt text](doc/quick-use-step-3.jpg)
+    * 在该 `Nanoflow` 中读取和打印 `Start time` 和 `End time` 属性。![Alt text](doc/quick-use-step-4.png)
+4. 运行。
 ## Demo 项目
 
 1. 你可以在[这里](todo)访问在线 demo。  
@@ -145,5 +148,3 @@ Properties to customize the view of the widget.
     - the widget will be bundled;
     - the bundle will be included in a `dist` folder in the root directory of the project;
     - the bundle will be included in the `deployment` and `widgets` folder of the Mendix test project.
-
-#
