@@ -5,6 +5,8 @@
     xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
     <name>Antd Date Range Picker</name>
     <description>A powerful Mendix pluggable widget used to pick date and time. It brings the ant-deign widget DatePicker into Mendix and implements almost all the features of the original widget</description>
+    <studioProCategory>Ant Design Widgets</studioProCategory>
+    <studioCategory>Ant Design Widgets</studioCategory>
     <icon />
     <properties>
         <propertyGroup caption="General">
