@@ -11,6 +11,8 @@ import "./ui/AntdDateRangePicker.css";
 import { RangePickerProps } from "antd/es/date-picker";
 import zh_CN from "antd/es/date-picker/locale/zh_CN";
 import en_US from "antd/es/date-picker/locale/en_US";
+import "dayjs/locale/zh-cn";
+import "dayjs/locale/en";
 
 import "./ui/AntdDateRangePicker.scss";
 
@@ -31,9 +33,18 @@ export class AntdDateRangePicker extends Component<AntdDateRangePickerContainerP
             popupStyle?: CSSProperties;
         } = {
             picker: props.picker,
-            format: props.format,
-            
+            format: props.format
         };
+
+        // === sub group Locale ===
+        // this part should be at the first because we should change the locale before any dayjs function invoked.
+        if (props.locale === "en_US") {
+            dayjs.locale("en");
+            pickerProps.locale = en_US;
+        } else {
+            dayjs.locale("zh-cn");
+            pickerProps.locale = zh_CN;
+        }
 
         // if (props.defaultValueStart !== undefined || props.defaultValueEnd !== undefined) {
         //     const defaultValue: RangeValue = [null, null];
@@ -97,13 +108,6 @@ export class AntdDateRangePicker extends Component<AntdDateRangePickerContainerP
         pickerProps.allowEmpty = [props.allowEmptyStart, props.allowEmptyEnd];
         pickerProps.autoFocus = props.autoFocus;
         pickerProps.inputReadOnly = props.inputReadOnly;
-
-        // === sub group Locale ===
-        if (props.locale === "en_US") {
-            pickerProps.locale = en_US;
-        } else {
-            pickerProps.locale = zh_CN;
-        }
 
         // === sub group Picker Open State ===
         if (props.open?.status === "available") {
