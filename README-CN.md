@@ -1,50 +1,45 @@
-## Introducation
+## 介绍
 
-[中文文档](./README-CN.md)  
-
-AntdDatePicker ([Github address](https://github.com/zjh1943/mendix-antd-date-range-picker)) is a Mendix widget for selecting time ranges, and implements most of the interface of [`RangePicker`](https://ant.design/components/date-picker-cn#rangepicker) in Ant Design.
+AntdDatePicker（[Github地址](https://github.com/zjh1943/mendix-antd-date-range-picker)）是一个用来选择时间范围的 Mendix Widget，实现了 Ant Design 中的 [`RangePicker`](https://ant.design/components/date-picker-cn#rangepicker) 的绝大部分接口。
 
 ![antd date range picker](./doc/DateRangePicker.png)
 
-## Featrues
+## 功能特性
 
-1. Support multiple time unit choices, including: `date`, `week`, `month`, `quarter`, `year`.
-2. Support custom date display format, such as: `yyyy-DD-mm`, `dddd-DD-mm hh:MM:ss`. 2.
-2. Support adding common shortcut buttons to select time period with one click.
-3. support time period selection accurate to hours, minutes and seconds.
-4. Support customizing non-selectable dates. 
-5. Support defining multiple languages. 
-6. Support Mendix's Validation Feedback feature.
+1. 支持多种时间单位的选择，包括：`date`, `week`, `month`, `quarter`, `year`.
+2. 支持自定义日期显示格式，比如：`yyyy-DD-mm`, `dddd-DD-mm hh:MM:ss`.
+2. 支持添加常用快捷按钮，一键选择时间段。
+3. 支持精确到时分秒的时间段选择。
+4. 支持自定义不可选择的日期。
+5. 支持定义多国语言。
+6. 支持 Mendix 的 Validation Feedback 功能。
 
-## Quick Use
+## 快速安装和使用
 
-### 1. Add this widget to the Mendix Project
+### 将该组件添加到 Mendix Project 中
+1. 从[这里](https://github.com/zjh1943/mendix-antd-date-range-picker/releases)下载 mpk 文件.
+3. 把 mpk 文件复制到你的 Mendix Project 目录 `{YourMendixProjectFolder}/widgets/`.
+4. 用 Mendix Studio Pro 打开你的 Mendix Project，然后点击菜单 `Menu > App > Synchronize App Directory`.
 
-1. Download the mpk file from [here](https://github.com/zjh1943/mendix-antd-date-range-picker/releases).
-3. Copy the mpk file to your Mendix Project directory `{YourMendixProjectFolder}/widgets/`.
-4. Open your Mendix Project with Mendix Studio Pro and click on the menu `Menu > App > Synchronize App Directory`.
+### 快速配置组件
 
-### 2. Set properties
+1. 选择任意页面，向页面添加一个 `DataView`，并为 `DataView` 设置好 `Datasource`。![Alt text](doc/quick-use-step-1.png)
+2. 向上述 `DataView` 中添加 `Antd Date Range Picker` 组件。可以从 Mendix Studio Pro 的右侧 Toolbox 中找到。![Alt text](doc/quick-use-step-2.png)
+3. 为该组件设置必要的属性。包括： `Picker Type`, `Start time`, `End time`, `On value change` :
+    * 设置 `Picker type`。可选择默认的 `Date`。
+    * 设置 `Start time` 和 `End time` 为实体的两个属性。用来设置和读取组件的开始和结束时间。
+    * 设置 `On value change` 为 `Nanoflow`，选择新建一个 `Nanoflow`。![Alt text](doc/quick-use-step-3.jpg)
+    * 在该 `Nanoflow` 中读取和打印 `Start time` 和 `End time` 属性。![Alt text](doc/quick-use-step-4.png)
+4. 运行。
+## Demo 项目
 
-1. Select any page, add a `DataView` to the page, and set the `Datasource` for the `DataView`. ![Alt text](doc/quick-use-step-1.png)
-2. Add the `Antd Date Range Picker` widget to the `DataView` above. It can be found in the Toolbox on the right side of Mendix Studio Pro. ![Alt text](doc/quick-use-step-2.png)
-3. Set the necessary properties for the widget, including `Picker Type`, `Start time`, `End time`, `On value change` :
-    * Set `Picker type`. Select the default `Date` type.
-    * Set `Start time` and `End time` as two properties of an entity. Thess two properties are used to set and read the start and end time of the widget.
-    * Set `On value change` to `Nanoflow` and choose `create a new Nanoflow`. ![Alt text](doc/quick-use-step-3.jpg)
-    * Read and print the `Start time` and `End time` properties in this `Nanoflow`. ![Alt text](doc/quick-use-step-4.png)
-4. Run.
-
-
-## Demo Project
-
-1. You can access the online demo [here](todo).   
-2. You can also download the demo project and start it on your own Mendix Studio Pro. This can be done as follows.
-    1. clone the demo project. 
-    2. run it.
+1. 你可以在[这里](todo)访问在线 demo。  
+2. 也可以下载 demo project，在自己的 Mendix Studio Pro 上启动运行。具体方法如下：
+    1. clone demo project。
+    2. 运行。
     
 
-## Datail of properties
+## 详细配置说明
 
 ### General
 
@@ -106,9 +101,9 @@ Properties to customize the view of the widget.
 * Custom Pannel Footer
     - Show custom footer. Whether show additional widgets on the footer of the picker pannel.
     - Custom pannel footer. Put additional widgets on the footer of the picker pannel.
-## Comparison with `antd` `RangePicker` features
+## 与 `antd` RangePicker 的功能对比
 
-Here is a list of all the properties of `RangePicker` in `antd`, with a description of whether this widget supports the property and why it does not. To see the meaning of the original property in `antd`, please [move here](https://ant.design/components/date-picker-cn#rangepicker).
+这里列举了 `antd` 中 `RangePicker` 的所有参数，并说明了该组件是否支持该属性，以及不支持的原因。如果想查看`antd`中原属性的含义，请[移步这里](https://ant.design/components/date-picker-cn#rangepicker)。
 
 | antd 组件参数             | 参数说明                                       | 是否支持 | 备注                   |
 | --------------------- | ------------------------------------------ | ---- | -------------------- |
@@ -144,14 +139,12 @@ Here is a list of all the properties of `RangePicker` in `antd`, with a descript
 | style                 | 自定义输入框样式                                   | Y    |                      |
 | onOpenChange          | 弹出日历和关闭日历的回调                               | Y    |                      | 
 ## Issues, suggestions and feature requests
-[Github Issue](https://github.com/zj1943/mendix-antd-date-range-picker/issues)
-
-At the same time, your are welcome to get into the China Technology Forum to get more in Mendix widget development. [check this out](https://marketplace.siemens.com.cn/low-code-community)
+[link to GitHub issues]
 
 ## Development and contribution
 
-1. Clone the project locally and install dependencies with `npm install`. If the npm version is v7.x.x, (users can use `npm -v` to check the version), use the following command to install dependencies: `npm install --legacy- peer-deps`.
-2. Run npm start in the command line to start bundle the widget:
-    * Project started bundling...
-    * Wait for the dinner, and the widget will be automatically generated in the dist directory;
-    * Developers can modify the package.json, and specify the test project of Mendix. When your dinner is ready, the widget will be automatically synchronized to the `deployment` and `widgets` directories.
+1. Install NPM package dependencies by using: `npm install`. If you use NPM v7.x.x, which can be checked by executing `npm -v`, execute: `npm install --legacy-peer-deps`.
+1. Run `npm start` to watch for code changes. On every change:
+    - the widget will be bundled;
+    - the bundle will be included in a `dist` folder in the root directory of the project;
+    - the bundle will be included in the `deployment` and `widgets` folder of the Mendix test project.
