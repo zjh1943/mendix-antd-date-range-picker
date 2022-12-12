@@ -1,5 +1,5 @@
 ## 介绍
-
+![GitHub all releases](https://img.shields.io/github/downloads/zjh1943/mendix-antd-date-range-picker/total?style=social)   
 AntdDatePicker（[Github地址](https://github.com/zjh1943/mendix-antd-date-range-picker)）是一个用来选择时间范围的 Mendix Widget，实现了 Ant Design 中的 [`RangePicker`](https://ant.design/components/date-picker-cn#rangepicker) 的绝大部分接口。  
 
 点击这个[在线 Demo](https://demo-antdwidgets-sandbox.mxapps.io/)可在线预览该组件的特性。
