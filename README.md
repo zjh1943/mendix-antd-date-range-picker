@@ -5,7 +5,7 @@
 
 
 AntdDatePicker ([Github address](https://github.com/zjh1943/mendix-antd-date-range-picker)) is a Mendix widget for selecting time ranges, and implements most of the interface of [`RangePicker`](https://ant.design/components/date-picker-cn#rangepicker) in Ant Design.   
-View features of this project on [online demo](https://demo-antdwidgets-sandbox.mxapps.io/).
+View features of this project on [online demo](https://demo-antdwidgets100.apps.ap-2a.mendixcloud.com).
 
 ![antd date range picker](./doc/DateRangePicker.png)
 
@@ -41,7 +41,7 @@ View features of this project on [online demo](https://demo-antdwidgets-sandbox.
 
 ## Demo Project
 
-1. You can access the online demo from [here](https://demo-antdwidgets-sandbox.mxapps.io/) to show the features of this widget.   
+1. You can access the online demo from [here](https://demo-antdwidgets100.apps.ap-2a.mendixcloud.com) to show the features of this widget.   
 2. You can also download the demo project from [here](https://github.com/zjh1943/mendx-antd-widgets-show) to run it on your own PC.
     
 

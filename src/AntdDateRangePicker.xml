@@ -7,6 +7,7 @@
     <description>A powerful Mendix pluggable widget used to pick date and time. It brings the ant-deign widget DatePicker into Mendix and implements almost all the features of the original widget</description>
     <studioProCategory>Ant Design Widgets</studioProCategory>
     <studioCategory>Ant Design Widgets</studioCategory>
+    <helpUrl>https://github.com/zjh1943/mendix-antd-date-range-picker/blob/main/README.md</helpUrl>
     <icon />
     <properties>
         <propertyGroup caption="General">
@@ -59,8 +60,7 @@
                 <property key="onChange" type="action" required="false">
                     <caption>On value change</caption>
                     <description>Will be triggered when eithter start value or end value is changed.</description>
-                </property>
-               
+                </property>               
             </propertyGroup>
             <propertyGroup caption="Views">
                 <property key="showTime" type="boolean" required="true" defaultValue="false">
@@ -255,10 +255,6 @@
                     <description>Put additional widgets on the footer of the picker pannel.</description>
                 </property>
             </propertyGroup>
-        </propertyGroup>
-        <propertyGroup caption="Common">
-            <systemProperty key="Name" />
-            <systemProperty key="TabIndex" />
         </propertyGroup>
     </properties>
 </widget>
