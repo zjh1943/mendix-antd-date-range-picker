@@ -16,7 +16,7 @@ View features of this project on [online demo](https://demo-antdwidgets100.apps.
 2. Support adding common shortcut buttons to select time period with one click.
 3. support time period selection accurate to hours, minutes and seconds.
 4. Support customizing non-selectable dates. 
-5. Support defining multiple languages. 
+5. Support multiple languages. 
 6. Support Mendix's Validation Feedback feature.
 
 ## Quick Use
@@ -29,7 +29,7 @@ View features of this project on [online demo](https://demo-antdwidgets100.apps.
 
 ### 2. Set properties
 
-1. Select any page, add a `DataView` to the page, and set the `Datasource` for the `DataView`. ![Alt text](doc/quick-use-step-1.png)
+1. Select any page, add a `DataView` to the page, and set the `Datasource` for the `DataView`. The Datasource should be an Entity that having at least 2 DateTime attributes, one for the start time, another for the end time.![Alt text](doc/quick-use-step-1.png)![Alt text](doc/quick-use-step-1.1.png)
 2. Add the `Antd Date Range Picker` widget to the `DataView` above. It can be found in the Toolbox on the right side of Mendix Studio Pro. ![Alt text](doc/quick-use-step-2.png)
 3. Set the necessary properties for the widget, including `Picker Type`, `Start time`, `End time`, `On value change` :
     * Set `Picker type`. Select the default `Date` type.
