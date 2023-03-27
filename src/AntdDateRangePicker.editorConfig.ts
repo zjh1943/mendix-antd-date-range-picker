@@ -105,7 +105,11 @@ export function getProperties(
 ): Properties {
     // Do the values manipulation here to control the visibility of properties in Studio and Studio Pro conditionally.
     if (values.disableDateMode === "off") {
-        hidePropertiesIn(defaultProperties, values, ["disableDateTemparyToggle", "disableDatesDatasource", "disableDatesAttribute"]);
+        hidePropertiesIn(defaultProperties, values, [
+            "disableDateTemparyToggle",
+            "disableDatesDatasource",
+            "disableDatesAttribute"
+        ]);
     }
     if (values.showCustomFooter === false) {
         hidePropertyIn(defaultProperties, values, "pannelFooterContent");
