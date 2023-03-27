@@ -142,7 +142,15 @@ export class AntdDateRangePicker extends Component<AntdDateRangePickerContainerP
         }
 
         // === sub group Disable Date ===
+        let disablingFunctionOpen = false;
         if (props.disableDateMode !== "off") {
+            disablingFunctionOpen = true;
+            if (props.disableDateTemparyToggle && props.disableDateTemparyToggle?.value === false) {
+                disablingFunctionOpen = false;
+            }
+        }
+
+        if (disablingFunctionOpen) {
             pickerProps.disabledDate = date => {
                 if (props.disableDatesDatasource?.status === "available") {
                     // console.log(`begin check disable. date = ${date}`);

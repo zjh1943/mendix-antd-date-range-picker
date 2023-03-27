@@ -169,6 +169,13 @@
                         <enumerationValue key="negative">Negative</enumerationValue>
                     </enumerationValues>
                 </property>
+                <property key="disableDateTemparyToggle" type="attribute" required="false">
+                    <caption>Tempary toggle</caption>
+                    <description>Use this dynamic attribute to control the tempary open state of the disabling function. Commonly, you do not need to config this property. Unless you want to close the disabling function tempary during the application running.</description>
+                    <attributeTypes>
+                        <attributeType name="Boolean" />
+                    </attributeTypes>
+                </property>
                 <property key="disableDatesDatasource" type="datasource" isList="true" required="false">
                     <caption>Disable datasource</caption>
                     <description></description>

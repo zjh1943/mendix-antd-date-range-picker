@@ -38,6 +38,7 @@ export interface AntdDateRangePickerContainerProps {
     defaultPickerValueStart?: EditableValue<Date>;
     defaultPickerValueEnd?: EditableValue<Date>;
     disableDateMode: DisableDateModeEnum;
+    disableDateTemparyToggle?: EditableValue<boolean>;
     disableDatesDatasource?: ListValue;
     disableDatesAttribute?: ListAttributeValue<Date>;
     size: SizeEnum;
@@ -80,6 +81,7 @@ export interface AntdDateRangePickerPreviewProps {
     defaultPickerValueStart: string;
     defaultPickerValueEnd: string;
     disableDateMode: DisableDateModeEnum;
+    disableDateTemparyToggle: string;
     disableDatesDatasource: {} | { type: string } | null;
     disableDatesAttribute: string;
     size: SizeEnum;
