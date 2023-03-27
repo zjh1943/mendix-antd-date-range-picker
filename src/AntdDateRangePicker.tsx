@@ -145,7 +145,7 @@ export class AntdDateRangePicker extends Component<AntdDateRangePickerContainerP
         let disablingFunctionOpen = false;
         if (props.disableDateMode !== "off") {
             disablingFunctionOpen = true;
-            if (props.disableDateTemparyToggle && props.disableDateTemparyToggle?.value === false) {
+            if (props.disableDateTemparyToggle?.status === "available" && props.disableDateTemparyToggle?.value === false) {
                 disablingFunctionOpen = false;
             }
         }
